@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { Form, Field } from "react-final-form";
+import TextField from './components/TextBox.js';
 
 
 
 const onSubmit = values => {
   document.getElementById("texthere").innerHTML='';
   console.log(values);
-  document.getElementById("texthere").innerHTML+= `<h1>Topic: ${values.topic} </h1> <p>StringStuff: ${values.sampleField} </p><p>by ${values.firstName} ${values.lastName} </p>`
+  document.getElementById("texthere").innerHTML+= `<h1>Topic: ${values.topic} </h1> <p>StringStuff: ${values.sampleField} </p><p>by ${values.firstName} ${values.lastName} </p> <p>Reach me at ${values.email}</p>`
 
 };
 
@@ -62,16 +63,17 @@ class App extends Component {
                       />
                     </label> */}
                     <div>
-                      <label>Topic Title</label>
+                     
                       <Field
                         name="topic"
-                        component="input"
-                        type="text"
-                        placeholder="Topic Title"
                         validate={required}
                         render={({ input, meta }) => (
                           <div>
-                            <input {...input} />
+                             <label>Topic Title</label>
+                            <input {...input}
+                            placeholder="title..." />
+                            {meta.error &&
+                            meta.touched && <span>{meta.error}</span>}
                           </div>
                           // {meta.touched && meta.error && <span>{meta.error}</span>}
                         )}
@@ -126,6 +128,17 @@ class App extends Component {
                         </div>
                       )}
                     </Field>
+
+                     <div>
+            <label>Email</label>
+            <Field
+              name="email"
+              component={TextField}
+              type="email"
+              label="Email"
+            />
+          </div>
+
 
                     <button type="submit">Submit Pls</button>
                   {/* </div>
