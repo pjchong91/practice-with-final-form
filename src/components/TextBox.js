@@ -7,6 +7,8 @@ export default ({
   ...rest
 }) => (
   <TextField
+  helperText={meta.touched ? meta.error : undefined}
+  error={meta.error && meta.touched}
     {...rest}
     name={name}
     helperText={meta.touched ? meta.error : undefined}

@@ -9,13 +9,13 @@ import TextField from './components/TextBox.js';
 const onSubmit = values => {
   document.getElementById("texthere").innerHTML='';
   console.log(values);
-  document.getElementById("texthere").innerHTML+= `<h1>Topic: ${values.topic} </h1> <p>StringStuff: ${values.sampleField} </p><p>by ${values.firstName} ${values.lastName} </p> <p>Reach me at ${values.email}</p>`
+  document.getElementById("texthere").innerHTML+= `<h1>Topic: ${values.topic} </h1> <p>StringStuff: ${values.sampleField} </p><p>by ${values.firstName} ${values.lastName} </p> <p>I have a  ${values.itemName}.${values.itemDescription}</p>`
 
 };
 
 const required = value => (value ? undefined : "Required");
 const isString = value => ( 
-  typeof value === 'string'? true : 'Needs text'
+  typeof value === 'string'? undefined : 'Needs text'
 );
 
 
@@ -62,7 +62,7 @@ class App extends Component {
                         onChange={event => this.handleChange(event)}
                       />
                     </label> */}
-                    <div>
+                    {/* <div>
                      
                       <Field
                         name="topic"
@@ -78,8 +78,8 @@ class App extends Component {
                           // {meta.touched && meta.error && <span>{meta.error}</span>}
                         )}
                       />
-                    </div>
-                    <div>
+                    </div> */}
+                    {/* <div>
                       <Field
                         name="sampleField"
                         component="input"
@@ -97,9 +97,9 @@ class App extends Component {
                         </div>
                         )}
                       </Field>
-                    </div>
+                    </div> */}
 
-                    <Field name="lastName" validate={required}>
+                    {/* <Field name="lastName" validate={required}>
                       {({ input, meta }) => (
                         <div>
                           <label>Last Name</label>
@@ -112,9 +112,9 @@ class App extends Component {
                             meta.touched && <span>{meta.error}</span>}
                         </div>
                       )}
-                    </Field>
+                    </Field> */}
 
-                     <Field name="firstName" validate={required}>
+                     {/* <Field name="firstName" validate={required}>
                       {({ input, meta }) => (
                         <div>
                           <label>First Name</label>
@@ -127,19 +127,34 @@ class App extends Component {
                             meta.touched && <span>{meta.error}</span>}
                         </div>
                       )}
-                    </Field>
+                    </Field> */}
+
 
                      <div>
-            <label>Email</label>
+            {/* <label>Email</label> */}
             <Field
-              name="email"
+              name="itemName"
               component={TextField}
-              type="email"
-              label="Email"
+              type="text"
+              label="Name Your Item"
+              validate={required}
             />
           </div>
 
+                     <div>
+            {/* <label>Email</label> */}
+            <Field
+              name="itemDescription"
+              component={TextField}
+              type="text"
+              multiline
+              rows="4"
+              label="Describe Your Item"
+              validate={isString}
+            />
+          </div>
 
+          
                     <button type="submit">Submit Pls</button>
                   {/* </div>
                 )}
